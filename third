@@ -1,0 +1,15 @@
+int lengthOfLongestSubstring(const string &s) {
+vector<int> c(256,-1);
+int currStart = 0;
+int currEnd = 0;
+int maxSize=0;
+for (; currEnd<s.size(); currEnd++){
+	if(c[s[currEnd]] > currStart){
+	currStart=c[s[currEnd]] + 1;
+}
+	c[s[currEnd]] = currEnd;
+	if(currEnd-currStart+1)>maxSize)
+maxSize = currEnd - currStart + 1;
+}
+        	return maxSize;
+}
