@@ -1,0 +1,43 @@
+class Heap{
+vector<int> v;
+public:
+	int push(int val){
+		v.push_back(val);
+		heapify_back(v.size()-1);
+}
+
+int top(){
+	if (v.size()>0) return v[0];
+	return NULL;
+}
+
+void pop(){
+	if(v.size()==0) throw new exception();
+	v[0] = v.back();
+	v.pop_back();
+	heapify_head(0);
+}
+private:
+	int left_son(int i){
+		int left = 2*i + 1
+	return v.size()-1 >= left ? left  : -1;
+}
+	int right_son(int i){
+		int right = 2*i + 2;
+	return v.size()-1 >= right ? right : -1;
+}
+int parent(int i){
+	return i == 0 ?  -1 : (i-1)/2;
+}
+void heapify_to_down(int i){
+	int left_i = left_son(i);
+	int right_i = right_son(i);
+	int left=-MAX_INT, right=-MAX_INT;
+	if (left_i != -1) left = v[left_i];
+	if(right_i != -1) right = v[left_i];
+		v[i] < i;
+}
+void heapify_to_up(int i){
+	
+}
+};
