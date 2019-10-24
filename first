@@ -1,0 +1,20 @@
+300 longest increasing subsequence
+
+10,9,2,5,3,7,101,18
+
+Res = 3 5 18 101 101
+
+
+Int longestIncreasingSubsequence(const vector<int> &v){
+	vector<int> res;
+	for(auto & n : v){
+		auto lb = lower_bound(res.begin(), res.end(), n);
+		if(lb == res.end()){
+			res.push_back(n);
+} else {
+	*lb = n;
+}
+}
+return res.length();
+}
+
