@@ -1,0 +1,25 @@
+3	Longest Substring Without Repeating Characters
+
+/*
+|     |
+abcabcbb
+maxSize 	6
+*/
+int longestSubString(const string& s){
+	unordered_set<char> c;
+	Int currStart = 0;
+int currEnd = 0;
+	Int maxSize=0;
+	for (; currEnd<s.size(); currEnd++){
+		if(c.contains(s[currEnd])){
+			while(s[currStart] != s[currEnd]){
+				c.erase(s[currStart]);
+currStart++;
+}
+c.erase(s[currStart]);
+}
+c.insert(s[currEnd]);
+		if(currEnd-currStart+1>maxSize)
+maxSize = currEnd-currStart+1;
+}
+}
