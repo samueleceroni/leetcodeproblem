@@ -1,4 +1,10 @@
-Symbol       Value
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+
 class Solution {
 private:
     unordered_map<char, int> rToI;
@@ -11,25 +17,17 @@ public:
         rToI['C'] = 100;
         rToI['D'] = 500;
         rToI['M'] = 1000;
-        return romanToInt(s, 0, s.length()-1);
-    }
-private:
-    int romanToInt(const string &s, int a, int z){
-        if(z < a) return 0;
-        vector<int> suffMaxPos;
-        int currMax = 0, maxSum = 0;
-        for(int i = z; i>=a; i--){
+        
+        int tot = 0;
+        int currMax = 0;
+        for (int i = s.length()-1; i>=0; i--){
             if(rToI[s[i]]>=currMax){
-                currMax = rToI[s[i]];
-                suffMaxPos.push_back(i);
-                maxSum += currMax;
+                currMax =rToI[s[i]]; 
+                tot+=currMax;
+            } else {
+                tot -= rToI[s[i]];
             }
         }
-        reverse(suffMaxPos.begin(), suffMaxPos.end());
-        int toRemove = 0;
-        for(int i = 0; i<suffMaxPos.size()-1; i++){
-            toRemove += romanToInt(s, suffMaxPos[i]+1, suffMaxPos[i+1]-1);
-        }
-        return currMax - toRemove;        
+        return tot;
     }
 };
